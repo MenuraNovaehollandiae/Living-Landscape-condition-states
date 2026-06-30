@@ -30,7 +30,7 @@
   font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.25;
-  max-width: 390px;
+  max-width: 430px;
   max-height: 360px;
   overflow-y: auto;
 }
@@ -61,6 +61,13 @@
   width: 28px;
   text-align: right;
   padding-right: 8px;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 13px;
+  border: 1px solid #666;
 }
         </style>
         <title></title>
@@ -378,28 +385,83 @@
   <h3>STM condition states</h3>
   <table>
     <tr>
+      <th></th>
       <th>ID</th>
       <th>Condition state</th>
     </tr>
-    <tr><td class="id">1</td><td>Reference</td></tr>
-    <tr><td class="id">2</td><td>Modified overstorey, reference understorey</td></tr>
-    <tr><td class="id">3</td><td>Reference overstorey, modified understorey</td></tr>
-    <tr><td class="id">4</td><td>Modified overstorey, modified understorey</td></tr>
-    <tr><td class="id">5</td><td>Sparse / absent overstorey, modified understorey</td></tr>
-    <tr><td class="id">6</td><td>Reference overstorey, highly modified understorey</td></tr>
-    <tr><td class="id">7</td><td>Modified overstorey, highly modified understorey</td></tr>
-    <tr><td class="id">8</td><td>Sparse / absent overstorey, highly modified understorey</td></tr>
-    <tr><td class="id">9</td><td>Collapsed overstorey, highly modified understorey</td></tr>
-    <tr><td class="id">10</td><td>Reference overstorey, collapsed understorey — not expected to occur</td></tr>
-    <tr><td class="id">11</td><td>Modified overstorey, collapsed understorey — not expected to occur</td></tr>
-    <tr><td class="id">12</td><td>Sparse / absent overstorey, collapsed understorey — not expected to occur</td></tr>
-    <tr><td class="id">13</td><td>Collapsed overstorey and understorey — crop; not expected to occur</td></tr>
-    <tr><td class="id">14</td><td>Collapsed overstorey and understorey — eucalyptus oil; not expected to occur</td></tr>
-    <tr><td class="id">15</td><td>Diverse Triodia grassland / shrubland with resprouting mallee</td></tr>
-    <tr><td class="id">16</td><td>Depauperate Triodia grassland / shrubland with resprouting mallee</td></tr>
-    <tr><td class="id">17</td><td>Depauperate Triodia / shrubby mallee woodland</td></tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(43, 131, 186);"></span></td>
+      <td class="id">1</td>
+      <td>Reference</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(90, 164, 178);"></span></td>
+      <td class="id">2</td>
+      <td>Modified overstorey, reference understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(136, 196, 170);"></span></td>
+      <td class="id">3</td>
+      <td>Reference overstorey, modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(179, 224, 166);"></span></td>
+      <td class="id">4</td>
+      <td>Modified overstorey, modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(209, 236, 176);"></span></td>
+      <td class="id">5</td>
+      <td>Sparse / absent overstorey, modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(240, 249, 186);"></span></td>
+      <td class="id">6</td>
+      <td>Reference overstorey, highly modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(255, 240, 174);"></span></td>
+      <td class="id">7</td>
+      <td>Modified overstorey, highly modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(254, 211, 140);"></span></td>
+      <td class="id">8</td>
+      <td>Sparse / absent overstorey, highly modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(253, 181, 106);"></span></td>
+      <td class="id">9</td>
+      <td>Collapsed overstorey, highly modified understorey</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(243, 133, 78);"></span></td>
+      <td class="id">15</td>
+      <td>Diverse Triodia grassland / shrubland with resprouting mallee</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(229, 79, 53);"></span></td>
+      <td class="id">16</td>
+      <td>Depauperate Triodia grassland / shrubland with resprouting mallee</td>
+    </tr>
+
+    <tr>
+      <td><span class="legend-swatch" style="background: rgb(215, 25, 28);"></span></td>
+      <td class="id">17</td>
+      <td>Depauperate Triodia / shrubby mallee woodland</td>
+    </tr>
   </table>
 </div>
-
     </body>
 </html>
