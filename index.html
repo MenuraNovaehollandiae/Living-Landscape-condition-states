@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Safeguarding mallee birds — habitat suitability maps</title>
+  <title>Living Landscape mallee condition-state map</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,10 +14,22 @@
 
     h1 {
       font-size: 2.2em;
+      margin-bottom: 16px;
     }
 
     h2 {
       margin-top: 36px;
+    }
+
+    .hero-image {
+      width: 85%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      margin: 18px auto 28px auto;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
 
     .button {
@@ -40,41 +52,62 @@
       font-size: 0.95em;
       color: #444;
     }
+
+    .logo-footer {
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    .logo-footer img {
+      max-width: 100%;
+      width: 520px;
+      height: auto;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Safeguarding mallee birds — habitat suitability maps</h1>
+  <h1>Living Landscape mallee condition-state map</h1>
+
+  <img class="hero-image" src="images/stm-hero.jpg" alt="Mallee vegetation condition-state map">
 
   <p>
-    These interactive maps show habitat suitability for the mallee bird community,
-    linking expert-elicited State-and-Transition Models of vegetation condition
-    to species- and community-level suitability scores.
+    This interactive map shows vegetation condition states across the Living Landscape
+    study region in the South Australian mallee.
   </p>
 
   <p>
-    Suitability is shown on a 0–7 Likert scale, where 0 indicates that a species
-    is not expected to occur and 7 indicates the best available habitat.
+    The mapped condition states were developed from expert-elicited State-and-Transition
+    Models and represent combinations of overstorey and understorey condition. States
+    range from reference vegetation through to modified understorey, sparse or modified
+    overstorey, and collapsed overstorey condition.
   </p>
 
   <p>
-    Use the map layer control to turn map layers on and off. Satellite imagery is
-    provided as an online basemap and may take a moment to load.
+    The condition-state map was derived by combining a vegetation-type map, a canopy /
+    overstorey condition map, and an understorey condition map based on a grazing
+    pressure index.
   </p>
 
-  <h2>Explore the maps</h2>
+  <h2>Explore the map</h2>
 
-  <a class="button" href="mallee-specialists/">Mallee specialists</a>
-  <a class="button" href="dependents-honeyeaters/">Mallee dependents - honeyeaters</a>
-  <a class="button" href="dependents-shrub/">Mallee dependents - shrub birds</a>
-  <a class="button" href="dependents-gleaners/">Mallee dependents - foliage gleaners</a>
-  <a class="button" href="dependents-parrots/">Mallee dependents - parrots</a>
-  <a class="button" href="community-maps/">Community-level maps</a>
+  <a class="button" href="stm-map/">Explore the STM map</a>
 
   <p class="note">
-    These maps are intended as decision-support outputs and should be interpreted
-    alongside local ecological knowledge, field validation, and the assumptions of
-    the underlying State-and-Transition Models.
+    This map is intended as a broad-scale decision-support output and should be
+    interpreted alongside field validation, local ecological knowledge, and the
+    assumptions of the underlying State-and-Transition Models.
   </p>
+
+  <p class="note">
+    This project was supported by funding from the Australian Government’s National
+    Environmental Science Program through the Resilient Landscapes Hub. We acknowledge
+    the Traditional Owners of Country throughout Australia and their continuing
+    connection to land, sea and community, and pay our respects to Elders past and present.
+  </p>
+
+  <div class="logo-footer">
+    <img src="images/logos.png" alt="Project partner logos">
+  </div>
 </body>
 </html>
