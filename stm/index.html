@@ -18,6 +18,50 @@
             padding: 0;
             margin: 0;
         }
+			.stm-legend {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 12px 14px;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.35);
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+  max-width: 390px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.stm-legend h3 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+}
+
+.stm-legend table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.stm-legend th {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding: 3px 4px;
+}
+
+.stm-legend td {
+  vertical-align: top;
+  padding: 3px 4px;
+}
+
+.stm-legend .id {
+  font-weight: bold;
+  width: 28px;
+  text-align: right;
+  padding-right: 8px;
+}
         </style>
         <title></title>
     </head>
@@ -107,6 +151,14 @@
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
+			
+	var scale = L.control.scale({
+    position: 'bottomleft',
+    metric: true,
+    imperial: false,
+    maxWidth: 200
+}).addTo(map);
+			
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
             if (bounds_group.getLayers().length) {
@@ -320,6 +372,34 @@
         map.on("layerremove", function(){
             resetLabels([layer_Riverland_biosphere_2]);
         });
-        </script>        
+        </script>
+
+<div class="stm-legend">
+  <h3>STM condition states</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Condition state</th>
+    </tr>
+    <tr><td class="id">1</td><td>Reference</td></tr>
+    <tr><td class="id">2</td><td>Modified overstorey, reference understorey</td></tr>
+    <tr><td class="id">3</td><td>Reference overstorey, modified understorey</td></tr>
+    <tr><td class="id">4</td><td>Modified overstorey, modified understorey</td></tr>
+    <tr><td class="id">5</td><td>Sparse / absent overstorey, modified understorey</td></tr>
+    <tr><td class="id">6</td><td>Reference overstorey, highly modified understorey</td></tr>
+    <tr><td class="id">7</td><td>Modified overstorey, highly modified understorey</td></tr>
+    <tr><td class="id">8</td><td>Sparse / absent overstorey, highly modified understorey</td></tr>
+    <tr><td class="id">9</td><td>Collapsed overstorey, highly modified understorey</td></tr>
+    <tr><td class="id">10</td><td>Reference overstorey, collapsed understorey — not expected to occur</td></tr>
+    <tr><td class="id">11</td><td>Modified overstorey, collapsed understorey — not expected to occur</td></tr>
+    <tr><td class="id">12</td><td>Sparse / absent overstorey, collapsed understorey — not expected to occur</td></tr>
+    <tr><td class="id">13</td><td>Collapsed overstorey and understorey — crop; not expected to occur</td></tr>
+    <tr><td class="id">14</td><td>Collapsed overstorey and understorey — eucalyptus oil; not expected to occur</td></tr>
+    <tr><td class="id">15</td><td>Diverse Triodia grassland / shrubland with resprouting mallee</td></tr>
+    <tr><td class="id">16</td><td>Depauperate Triodia grassland / shrubland with resprouting mallee</td></tr>
+    <tr><td class="id">17</td><td>Depauperate Triodia / shrubby mallee woodland</td></tr>
+  </table>
+</div>
+
     </body>
 </html>
