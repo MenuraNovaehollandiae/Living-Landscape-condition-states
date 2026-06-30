@@ -191,9 +191,12 @@
         map.getPane('pane_Mapped_STM_w_archetypes_1').style.zIndex = 401;
         var img_Mapped_STM_w_archetypes_1 = 'data/Mapped_STM_w_archetypes_1.png';
         var img_bounds_Mapped_STM_w_archetypes_1 = [[-34.166625519915186,139.88026683759668],[-33.04378496429026,141.09073483394596]];
-        var layer_Mapped_STM_w_archetypes_1 = new L.imageOverlay(img_Mapped_STM_w_archetypes_1,
-                                              img_bounds_Mapped_STM_w_archetypes_1,
-                                              {pane: 'pane_Mapped_STM_w_archetypes_1'});
+       var layer_Mapped_STM_w_archetypes_1 = new L.imageOverlay(img_Mapped_STM_w_archetypes_1,
+                                      img_bounds_Mapped_STM_w_archetypes_1,
+                                      {
+                                        pane: 'pane_Mapped_STM_w_archetypes_1',
+                                        opacity: 0.7
+                                      });
         bounds_group.addLayer(layer_Mapped_STM_w_archetypes_1);
         map.addLayer(layer_Mapped_STM_w_archetypes_1);
         function pop_Riverland_biosphere_2(feature, layer) {
@@ -287,8 +290,8 @@
         bounds_group.addLayer(layer_Riverland_biosphere_2);
         map.addLayer(layer_Riverland_biosphere_2);
         var overlaysTree = [
-            {label: '<img src="legend/Riverland_biosphere_2.png" /> Riverland_biosphere', layer: layer_Riverland_biosphere_2},
-            {label: "Mapped_STM_w_archetypes", layer: layer_Mapped_STM_w_archetypes_1},
+            {label: '<img src="legend/Riverland biosphere_2.png" /> Riverland_biosphere', layer: layer_Riverland_biosphere_2},
+            {label: "Mapped State and Transition Model", layer: layer_Mapped_STM_w_archetypes_1},
             {label: "ESRI world imagery", layer: layer_ESRIworldimagery_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
