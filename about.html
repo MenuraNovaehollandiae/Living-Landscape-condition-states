@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>About this map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 950px;
+      margin: 60px auto;
+      padding: 0 24px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      margin-top: 28px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 18px 0;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f2f2;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 12px 12px 24px 0;
+      padding: 12px 18px;
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #004f99;
+    }
+
+    .note {
+      margin-top: 28px;
+      font-size: 0.95em;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>About this map</h1>
+
+  <a class="button" href="index.html">← Back to main page</a>
+  <a class="button" href="stm/">Explore the condition-state map</a>
+
+  <h2>Living Landscape mallee condition-state maps</h2>
+
+  <p>
+    This repository contains an interactive web map showing vegetation condition
+    states across the Living Landscape study region in the South Australian mallee.
+  </p>
+
+  <p>
+    The mapped condition states were developed from expert-elicited
+    State-and-Transition Models, or STMs, and represent combinations of overstorey
+    and understorey condition. States range from reference vegetation through to
+    modified understorey, sparse or modified overstorey, and collapsed overstorey
+    condition.
+  </p>
+
+  <h2>Overview</h2>
+
+  <p>The condition-state map was derived by combining three spatial inputs:</p>
+
+  <ol>
+    <li>a vegetation-type map for the Living Landscape study region;</li>
+    <li>a tree canopy / overstorey condition map; and</li>
+    <li>an understorey condition map based on a grazing pressure index.</li>
+  </ol>
+
+  <p>
+    These layers were combined using a rule-based matrix that assigns each pixel
+    to an STM condition-state code according to vegetation type, overstorey
+    condition, and understorey condition.
+  </p>
+
+  <p>
+    The final web map is intended as a decision-support product for visualising
+    broad patterns in mallee vegetation condition across the study region.
+  </p>
+
+  <h2>Study region</h2>
+
+  <p>
+    The map covers the Living Landscape case study region in the South Australian
+    mallee, including the Calperum landscape where expert elicitation workshops
+    were undertaken.
+  </p>
+
+  <h2>Methods summary</h2>
+
+  <h3>Vegetation type</h3>
+
+  <p>
+    The STM condition-state map uses a vegetation-type map developed for the
+    Living Landscape study region. The rule-based condition-state assignment
+    focused on mallee vegetation types considered to occur across the case study
+    region, including:
+  </p>
+
+  <ul>
+    <li>Shrubby Mallee;</li>
+    <li>Triodia Mallee;</li>
+    <li>Derived Grassland.</li>
+  </ul>
+
+  <p>
+    Mesic mallee and chenopod mallee were not considered to occur across the case
+    study region for this mapping application.
+  </p>
+
+  <h3>Understorey condition</h3>
+
+  <p>
+    Understorey condition was mapped using a grazing pressure index derived from
+    pastoral dam data. Dam data were sourced from Gillespie (2025), which provided
+    an inventory of pastoral dams and an assessment of their capacity to retain
+    water. The original dam-water assessment was derived from Sentinel-2 imagery
+    using NDWI to estimate water persistence over a 10-year period.
+  </p>
+
+  <p>
+    For each dam, grazing pressure was estimated from water availability and
+    recovery since decommissioning. Water availability was calculated as the
+    proportion of study-period days in which standing water was detected. For
+    decommissioned dams, this value was reduced using a recovery multiplier based
+    on years since closure and an assumed 30-year recovery timeframe.
+  </p>
+
+  <p>
+    A distance-decay surface was then generated around each dam using an exponential
+    decay function scaled so that grazing pressure declined to approximately 0.01
+    at 8 km from the dam. Dam-specific decay rasters were combined using a
+    cell-wise maximum, so that each pixel was assigned the highest grazing pressure
+    value from any dam.
+  </p>
+
+  <p>
+    The continuous grazing pressure surface was then reclassified into four
+    ordinal understorey condition classes:
+  </p>
+
+  <table>
+    <tr>
+      <th>Understorey class</th>
+      <th>Description</th>
+      <th>GPI threshold</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Collapsed</td>
+      <td>≥ 0.239</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Highly modified</td>
+      <td>0.080 to &lt; 0.239</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Modified</td>
+      <td>0.004 to &lt; 0.080</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Reference</td>
+      <td>&lt; 0.004</td>
+    </tr>
+  </table>
+
+  <p>
+    These thresholds were calibrated using the top quartile of dams with the
+    highest and most persistent water availability. Mean GPI values were extracted
+    at 100 m, 2 km, and 6 km from dam centroids to represent collapsed, highly
+    modified, modified, and reference understorey condition classes.
+  </p>
+
+  <h3>Overstorey / canopy condition</h3>
+
+  <p>
+    Tree canopy was initially mapped as a binary treed / cleared class using a
+    Random Forest classifier implemented in Google Earth Engine. The classifier
+    used 200 trees and the same predictor variables as the vegetation-type
+    classification. Reference data comprised manually digitised canopy points, and
+    cross-validation yielded a user’s accuracy of 77% for the treed class.
+  </p>
+
+  <p>
+    To derive canopy-cover classes relevant to the STM, a tree-pixel density metric
+    was calculated using an 11 × 11 moving window. The resulting canopy-density
+    classes were calibrated against high-resolution 30 cm Bing Maps imagery
+    processed in ImageJ.
+  </p>
+
+  <p>Five canopy classes were used:</p>
+
+  <table>
+    <tr>
+      <th>Canopy class</th>
+      <th>Description</th>
+      <th>Approximate canopy cover</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>No trees</td>
+      <td>0 pixels</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Sparse canopy</td>
+      <td>≤ 5% cover</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Open canopy</td>
+      <td>6–15% cover</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Moderate canopy</td>
+      <td>16–20% cover</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Dense canopy</td>
+      <td>&gt; 20% cover</td>
+    </tr>
+  </table>
+
+  <p>
+    Post-classification cleaning removed isolated treed pixels with one or fewer
+    treed neighbours in a 3 × 3 window, followed by a 3 × 3 mode filter.
+  </p>
+
+  <h2>STM condition-state assignment</h2>
+
+  <p>
+    Final STM condition-state codes were assigned using a rule-based matrix that
+    combined vegetation type, canopy condition class, and understorey condition
+    class.
+  </p>
+
+  <p>
+    For Triodia Mallee, canopy class 5 was treated as reference overstorey,
+    classes 3–4 as modified overstorey, class 2 as sparse or absent overstorey,
+    and class 1 as collapsed overstorey.
+  </p>
+
+  <p>
+    For Shrubby Mallee, canopy classes 4–5 were treated as reference overstorey,
+    class 3 as modified overstorey, class 2 as sparse or absent overstorey, and
+    class 1 as collapsed overstorey.
+  </p>
+
+  <p>Understorey classes were interpreted as:</p>
+
+  <table>
+    <tr>
+      <th>Understorey class</th>
+      <th>Condition</th>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Reference</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Modified</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Highly modified</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Collapsed</td>
+    </tr>
+  </table>
+
+  <p>
+    Derived Grassland was assigned to STM code 9, representing collapsed
+    overstorey and highly modified understorey.
+  </p>
+
+  <p>
+    Several theoretically possible combinations involving collapsed understorey
+    were included in the STM matrix but were not expected to occur across the
+    mapped case study region.
+  </p>
+
+  <h2>Condition-state raster values</h2>
+
+  <p>
+    The STM condition-state raster uses integer values to represent mapped
+    vegetation condition states. Raster values correspond to the following
+    condition-state classes:
+  </p>
+
+  <table>
+    <tr>
+      <th>Raster value</th>
+      <th>Condition state</th>
+    </tr>
+    <tr><td>1</td><td>Reference</td></tr>
+    <tr><td>2</td><td>Modified overstorey, reference understorey</td></tr>
+    <tr><td>3</td><td>Reference overstorey, modified understorey</td></tr>
+    <tr><td>4</td><td>Modified overstorey, modified understorey</td></tr>
+    <tr><td>5</td><td>Sparse / absent overstorey, modified understorey</td></tr>
+    <tr><td>6</td><td>Reference overstorey, highly modified understorey</td></tr>
+    <tr><td>7</td><td>Modified overstorey, highly modified understorey</td></tr>
+    <tr><td>8</td><td>Sparse / absent overstorey, highly modified understorey</td></tr>
+    <tr><td>9</td><td>Collapsed overstorey, highly modified understorey</td></tr>
+    <tr><td>10</td><td>Reference overstorey, collapsed understorey — not expected to occur in the mapped study region</td></tr>
+    <tr><td>11</td><td>Modified overstorey, collapsed understorey — not expected to occur in the mapped study region</td></tr>
+    <tr><td>12</td><td>Sparse / absent overstorey, collapsed understorey — not expected to occur in the mapped study region</td></tr>
+    <tr><td>13</td><td>Collapsed overstorey and understorey — crop; not expected to occur in the mapped study region</td></tr>
+    <tr><td>14</td><td>Collapsed overstorey and understorey — eucalyptus oil plantation; not expected to occur in the mapped study region</td></tr>
+    <tr><td>15</td><td>Diverse Triodia grassland / shrubland with resprouting mallee</td></tr>
+    <tr><td>16</td><td>Depauperate Triodia grassland / shrubland with resprouting mallee</td></tr>
+    <tr><td>17</td><td>Depauperate Triodia / shrubby mallee woodland</td></tr>
+  </table>
+
+  <p>
+    Values 1–14 represent the main overstorey–understorey condition matrix.
+    Values 15–17 represent additional Triodia / shrubland and resprouting mallee
+    states included in the STM framework.
+  </p>
+
+  <h2>How to use the map</h2>
+
+  <p>
+    Open the GitHub Pages website associated with this repository to view the
+    interactive map. The map can be used to explore spatial patterns in vegetation
+    condition across the Living Landscape study region.
+  </p>
+
+  <p>
+    The map is intended as a broad-scale decision-support product. It should be
+    interpreted alongside field validation, local ecological knowledge, and the
+    assumptions of the underlying State-and-Transition Models.
+  </p>
+
+  <h2>Suggested citation</h2>
+
+  <p>
+    Maisey, A. C. et al. 2026.
+    <em>Living Landscape mallee condition-state maps</em>.
+    Interactive web map. GitHub repository.
+  </p>
+
+  <p class="note">
+    Update this citation with a DOI when available.
+  </p>
+
+  <h2>Acknowledgement</h2>
+
+  <p>
+    This project was supported by funding from the Australian Government’s
+    National Environmental Science Program through the Resilient Landscapes Hub.
+  </p>
+
+  <p>
+    We acknowledge the Traditional Owners of Country throughout Australia and
+    their continuing connection to land, sea and community, and pay our respects
+    to Elders past and present.
+  </p>
+
+  <h2>Licence</h2>
+
+  <p>
+    Unless otherwise stated, written content and map outputs in this repository
+    are provided under a Creative Commons Attribution 4.0 International licence.
+  </p>
+
+  <p>
+    Basemap imagery and third-party spatial data remain subject to their original
+    licences and terms of use.
+  </p>
+</body>
+</html>
