@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Maisey"
+  given-names: "Alex C."
+  orcid: "https://orcid.org/0000-0002-6827-7976"
+- family-names: "Radford"
+  given-names: "James Q."
+  orcid: "https://orcid.org/0000-0002-6014-0019"
+title: "Safeguarding Mallee Birds - Condition States Map"
+version: 1.0.0
+doi: 
+date-released: 2026-07-11
+url: "https://menuranovaehollandiae.github.io/Living-Landscape-condition-states/"
+repository-code: "https://github.com/MenuraNovaehollandiae/Living-Landscape-condition-states"
